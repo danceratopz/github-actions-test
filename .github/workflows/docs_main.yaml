@@ -23,6 +23,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e .[docs]
 
-    - name: Build and deploy
+    - name: Setup doc deploy
+      run: |
+        git config --global user.name "actions docs deployer"
+        git config --global user.email docs@github-actions.dummy.com
+
+    - name: Build and deploy docs
       run: |
         mike deploy --update-aliases --push --remote origin main latest
