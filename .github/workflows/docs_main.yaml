@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -25,8 +27,8 @@ jobs:
 
     - name: Setup doc deploy
       run: |
-        git config --global user.name "actions docs deployer"
-        git config --global user.email docs@github-actions.dummy.com
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email github-actions[bot]@users.noreply.github.com
 
     - name: Build and deploy docs
       run: |
