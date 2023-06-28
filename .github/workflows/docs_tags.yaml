@@ -25,4 +25,4 @@ jobs:
 
     - name: Build and deploy
       run: |
-        mike deploy --update-aliases --push --remote origin ${{ github.ref }} latest
+        mike deploy --update-aliases --push --remote origin ${{ github.ref_name }} latest
