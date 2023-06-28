@@ -30,6 +30,6 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email github-actions[bot]@users.noreply.github.com
 
-    - name: Build and deploy docs
+    - name: Build and deploy docs to gh-pages
       run: |
-        mike deploy --update-aliases --push --remote origin main latest
+        mike deploy --update-aliases --push --remote origin main development
