@@ -1,0 +1,104 @@
+site_name: Github Actions Test
+site_description: Testing Github Actions
+site_url: https://danceratopz.github.io/github-actions-test
+repo_url: https://github.com/danceratopz/github-actions-test
+repo_name: github-actions-test
+edit_uri: edit/main/docs/
+copyright: 'Copyright: 2023, The Community'
+
+plugins:
+  - git-authors:
+      exclude:
+        - tests/*
+        - navigation.md
+  - glightbox
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            members_order: source
+            group_by_category: false
+  - search
+  - social
+  - gen-files:
+      scripts:
+        - docs/gen_test_case_reference.py
+  - literate-nav:
+      nav_file: navigation.md
+
+watch:
+  - src/
+  - tests/
+
+theme: 
+  name: material
+  # logo: img/Ethereum-logo-600px.png
+  # favicon: img/ETH-logo-icon.svg
+  language: en
+  features:
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - navigation.indexes
+    - navigation.instant
+    - navigation.tabs
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 4
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  version:
+    provider: mike
