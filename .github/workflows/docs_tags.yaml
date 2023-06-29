@@ -33,11 +33,11 @@ jobs:
         git config --global user.email github-actions[bot]@users.noreply.github.com
 
     - name: Build and deploy pre-release to gh-pages
-      if: ${{ !github.event.release.prerelease }}
+      if: ${{ github.event.release.prerelease }}
       run: |
         mike deploy --push --remote origin ${{ github.ref_name }}
 
     - name: Build and deploy release to gh-pages; update latest
-      if: ${{ github.event.release.prerelease }}
+      if: ${{ !github.event.release.prerelease }}
       run: |
         mike deploy --update-aliases --push --remote origin ${{ github.ref_name }} latest
